@@ -1,30 +1,60 @@
 <h4>Todo list as on <%= Time.now.strftime("%d-%m-%Y")%> </h4>
 
-<table>
+<%= form_tag complete_lists_path, method: :put do %>
+
+<table class="table table-bordered table-hover" >
   <thead>
     <tr>
       <th>Name</th>
       <th>Remarks</th>
-      <th>ACTION</th>
+      <th>Status</th>
+
       <th>ACTION</th>
       <th>ACTION</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @lists.each do |list| %>
+    <% @lists_open.each do |list| %>
       <tr>
         <td><%= list.name.titlecase %></td>
         <td><%= list.remarks.capitalize %></td>
-        <td><%= link_to 'Show', list %></td>
-        <td><%= link_to 'Edit', edit_list_path(list) %></td>
-        <td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= check_box_tag "list_id", list.complete %> </td>
+
+        <td><%= link_to 'Edit', edit_list_path(list), :class => "btn btn-small btn-warning" %></td>
+        <td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-small btn-danger" %></td>
       </tr>
 
         <% end %>
   </tbody>
 </table>
 
-<br>
+    <%= submit_tag "Mark as Complete" %>
+ <% end %>
 
-<%= link_to 'New List', new_list_for_user_list_path(current_user.id) %>
+<%= link_to 'New List', new_list_for_user_list_path(current_user.id), :class => "btn btn-small btn-success" %>
+ <hr>
+<h4> Completed ToDo Lists </h4>
+
+<table class="table table-condensed table-bordered" >
+  <thead>
+  <tr>
+    <th>Sl</th>
+    <th>Name</th>
+    <th>Remarks</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <ol>          <% x = 0 %>
+  <% @lists_closed.each do |list| %>
+      <tr>
+        <td><%= x += 1  %> </td>
+        <td><%= list.name.titlecase %></td>
+        <td><%= list.remarks.capitalize %></td>
+      </tr>
+    <% end %>
+        </ol>
+  </tbody>
+
+</table>

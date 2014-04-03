@@ -7,6 +7,11 @@ Todo::Application.routes.draw do
     member do
       get 'new_list_for_user'
     end
+
+    collection do
+      get 'complete'
+    end
+
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

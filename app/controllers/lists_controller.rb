@@ -4,8 +4,14 @@ class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 
   def index
-      @lists = List.where(user_id: current_user.id, complete: nil)
+      @lists_open = List.where(user_id: current_user.id, complete: nil)
+      @lists_closed = List.where(user_id: current_user.id, complete: true)
       #@lists = List.where(complete: false)
+  end
+
+  def complete
+
+    redirect_to lists_path
   end
 
 
@@ -36,10 +42,12 @@ class ListsController < ApplicationController
 
  def destroy
    @list.delete
+
+   redirect_to lists_path
  end
 
   def list_params
-    params.require(:list).permit(:name, :remarks, :complete, :user_id)
+    params.require(:list).permit(:id, :name, :remarks, :complete, :user_id)
   end
 
   def set_list
