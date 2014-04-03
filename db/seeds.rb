@@ -1,13 +1,13 @@
 User.create!([
-  {email: "prabhakar.battula@gmail.com", encrypted_password: "$2a$10$MJQCsR82JNszKk.BSklv7e8pLKaqVDBruUuPPgQJBw07J4NdQFnei", reset_password_token: "6ac25a1040b6f8d4c633f036ba72cc753a4292f9793437376a04d55a3d9dc600", reset_password_sent_at: "2014-04-01 07:01:52", remember_created_at: nil, sign_in_count: 9, current_sign_in_at: "2014-04-02 06:27:23", last_sign_in_at: "2014-04-02 05:48:54", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1"},
-  {email: "srilu.battula@gmail.com", encrypted_password: "$2a$10$OsDHm5Mava5dyXgUfxxg2.2trnq3oFt8YoNnGksjMqXLLrsM6xYNu", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 3, current_sign_in_at: "2014-04-02 05:39:06", last_sign_in_at: "2014-04-01 13:31:35", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1"},
-  {email: "ankit.battula@gmail.com", encrypted_password: "$2a$10$IXjlEglwII/BlXkfAxv1j.lF3tTgQFujvH2KKlgzOy/H7VtYhkuOG", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 3, current_sign_in_at: "2014-04-02 05:35:59", last_sign_in_at: "2014-04-02 05:31:42", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1"},
-  {email: "anjali.battula@gmail.com", encrypted_password: "$2a$10$AJM1sRiXKFECQcx.NdviKOlXymgIOl1P858bDB9zQ/hXtKHm.yRzi", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2014-04-02 05:50:47", last_sign_in_at: "2014-04-02 05:50:47", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1"}
+  {email: "prabhakar.battula@gmail.com",
+   password: '12345678',
+   password_confirmation: '12345678'}
+
 ])
 List.create!([
   {name: "electricity bill", remarks: "pay the electricity bill for the month of feb 2014", complete: true, user_id: 1},
-  {name: "1", remarks: "23", complete: true, user_id: nil},
-  {name: "12", remarks: "123", complete: true, user_id: nil},
+  {name: "1", remarks: "23", complete: false, user_id: nil},
+  {name: "12", remarks: "123", complete: false, user_id: nil},
   {name: "elec", remarks: "bill for march", complete: true, user_id: nil},
   {name: "water bill", remarks: "for the month of february", complete: true, user_id: nil},
   {name: "phone", remarks: "asdfad", complete: true, user_id: nil},

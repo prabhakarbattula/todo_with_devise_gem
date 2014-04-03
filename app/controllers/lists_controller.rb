@@ -4,12 +4,21 @@ class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 
   def index
-      @lists_open = List.where(user_id: current_user.id, complete: nil)
-      @lists_closed = List.where(user_id: current_user.id, complete: true)
+
+      @lists_open = current_user.lists.where(complete: nil)
+      @lists_closed = current_user.lists.where(complete: true)
       #@lists = List.where(complete: false)
   end
 
   def complete
+    if params[:my_tag]
+      @lists = List.where(id: params[:my_tag])
+
+      @lists.each do | list |
+        list.complete = true
+        list.save
+      end
+    end
 
     redirect_to lists_path
   end

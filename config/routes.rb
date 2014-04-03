@@ -9,7 +9,7 @@ Todo::Application.routes.draw do
     end
 
     collection do
-      get 'complete'
+      put 'complete'
     end
 
   end
