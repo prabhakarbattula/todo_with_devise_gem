@@ -4,7 +4,7 @@
 
    Name: <%= list.text_field :name %> <br>
     Remarks: <%= list.text_area :remarks %> <br>
-   <%= list.hidden_field :complete %> <br>
+   <%= list.hidden_field :complete, :value => "false" %> <br>
     <%= list.hidden_field :user_id %> <br>
 
     <%= list.submit "Create List" %>

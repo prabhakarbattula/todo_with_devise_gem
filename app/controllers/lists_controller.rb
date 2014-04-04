@@ -5,7 +5,7 @@ class ListsController < ApplicationController
 
   def index
 
-      @lists_open = current_user.lists.where(complete: nil)
+      @lists_open = current_user.lists.where(complete: false)
       @lists_closed = current_user.lists.where(complete: true)
       #@lists = List.where(complete: false)
   end
@@ -34,9 +34,14 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = List.create(list_params)
+    @list = List.new(list_params)
 
-    redirect_to list_path(@list)
+    if @list.save
+      redirect_to list_path(@list), :notice => "Your new ToDo item was created!"
+    else
+      render "new"
+    end
+
   end
 
   def edit
@@ -52,7 +57,7 @@ class ListsController < ApplicationController
  def destroy
    @list.delete
 
-   redirect_to lists_path
+   redirect_to lists_path, :alert => "Are you sure?"
  end
 
   def list_params

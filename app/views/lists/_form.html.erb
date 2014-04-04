@@ -24,11 +24,13 @@
   <% if @list.persisted? %>
       <div class="field">
         <%= f.label :complete %><br>
-        <%= f.check_box :complete %>
+        <%= f.check_box(:complete, false)%>
       </div>
   <% end%>
 
-  <div class="field">
+
+
+    <div class="field">
       <%=   %><br>
       <%= f.hidden_field :user_id %>
   </div>
